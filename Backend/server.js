@@ -1,7 +1,7 @@
 const dotenv = require("dotenv").config();
 const express = require("express");
 const connectDB = require("./config/connectDB");
-const Task = require("./model/taskModel");
+const Task = require("./models/taskModel");
 const taskRoutes=require("./routes/taskRoute")
 
 
@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 // this is a middlewar functions
 app.use(express.json()) //this is express middleware to read json data
 app.use(express.urlencoded({extended:false})) //this is express middleware to read url encoded data
-app.use(taskRoutes); // this will call the routes in task routes for task related things 
+app.use("/api/tasks",taskRoutes); // this will call the routes in task routes for task related things 
 
 
 const logger =(req,res,next)=>{   
